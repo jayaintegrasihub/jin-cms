@@ -1,0 +1,26 @@
+name: SSH Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up SSH key
+      uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Pull code via SSH
+      env:
+        SSH_SERVER: ${{ secrets.SSH_HOST }}
+        SSH_USER: ${{ secrets.SSH_USERNAME }}
+      run: |
+        ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_SERVER "cd /opt/compro/jin-cms && git pull && pm2 restart 0"
