@@ -17,6 +17,7 @@ jobs:
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.SSH_PORT }}
-        command_timeout: 30m
         script: | 
-          echo "Nice Job!!!"
+          cd /opt/compro/jin-cms
+          git pull
+          pm2 restart 0
