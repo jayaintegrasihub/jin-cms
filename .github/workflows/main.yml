@@ -16,8 +16,8 @@ jobs:
 
       - name: Create environment production and build
         run: |
-          echo "${{ secrets.ENV_FILE_PRODUCTION }}" > .env.production
-          npm install --force
+          echo "${{ secrets.ENV_FILE_PRODUCTION }}" > .env
+          npm install
           npm run build
       
       - name: Log in to Docker Hub
