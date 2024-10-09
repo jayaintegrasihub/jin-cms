@@ -14,9 +14,8 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v3
 
-      - name: Create environment production and build
+      - name: build
         run: |
-          echo "${{ secrets.ENV_FILE_PRODUCTION }}" > .env
           npm install
           npm run build
       
@@ -61,4 +60,6 @@ jobs:
           sudo docker rmi sigitnurmajid/jin-cms:main
           sudo docker pull sigitnurmajid/jin-cms:main
 
-          docker run -d -p 1337:1337 --name jin-cms sigitnurmajid/jin-cms:main
+          echo "${{ secrets.ENV_FILE_PRODUCTION }}" > .env.production
+
+          docker run -d -p 1337:1337 --name jin-cms --env-file .env.production sigitnurmajid/jin-cms:main
