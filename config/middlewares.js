@@ -14,6 +14,7 @@ module.exports = [
         "http://172.19.0.1:5173",
         "http://172.22.80.1:5173",
         "https://jin-compro-fe.vercel.app",
+        "https://jayaintegrasi.id",
       ],
     },
   },
