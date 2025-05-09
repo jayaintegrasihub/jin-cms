@@ -17,6 +17,7 @@ module.exports = [
         "https://jayaintegrasi.id",
         "http://192.168.100.12:5173",
         "http://192.168.100.12",
+        "http://192.168.1.21:5173",
       ],
     },
   },
