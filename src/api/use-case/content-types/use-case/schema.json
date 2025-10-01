@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "use_cases",
+  "info": {
+    "singularName": "use-case",
+    "pluralName": "use-cases",
+    "displayName": "Use Case",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "author": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "products": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product",
+      "mappedBy": "use_cases"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "article": {
+      "type": "blocks"
+    },
+    "featured": {
+      "type": "boolean"
+    },
+    "summary": {
+      "type": "text"
+    }
+  }
+}
