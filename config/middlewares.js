@@ -1,6 +1,30 @@
 module.exports = [
   "strapi::errors",
-  "strapi::security",
+  {
+    name: "strapi::security",
+    config: {
+      contentSecurityPolicy: {
+        useDefaults: true,
+        directives: {
+          "default-src": ["'self'"],
+          "connect-src": [
+            "'self'",
+            "https:",
+            "https://porto-api.jayaintegrasi.id",
+            "https://api.emailjs.com",
+          ],
+          "img-src": [
+            "'self'",
+            "data:",
+            "blob:",
+            "https://porto-api.jayaintegrasi.id",
+          ],
+          "script-src": ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+          "style-src": ["'self'", "'unsafe-inline'"],
+        },
+      },
+    },
+  },
   "strapi::poweredBy",
   {
     name: "strapi::cors",
